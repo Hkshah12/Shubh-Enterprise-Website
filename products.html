@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shubh Enterprise product catalogue — lab consumables, IVF supplies, blood bank products, diagnostic reagents, and pharmaceutical testing materials." />
+  <title>Products | Shubh Enterprise</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/images/logo/favicon.ico" type="image/x-icon" />
+  <style>
+    /* ---- Inquiry modal ---- */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(7,21,41,.7);
+      display: none; align-items: center; justify-content: center;
+      z-index: 9999; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white); border-radius: var(--radius-lg);
+      max-width: 520px; width: 100%; padding: 36px;
+      box-shadow: var(--shadow-lg); position: relative;
+      animation: modalIn .2s ease;
+    }
+    @keyframes modalIn { from { transform: scale(.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px; border-radius: 6px;
+      border: 1px solid var(--border); background: var(--gray-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer; color: var(--gray-600);
+      transition: var(--transition);
+    }
+    .modal-close:hover { background: var(--gray-200); }
+    .modal h3 { color: var(--navy); margin-bottom: 4px; }
+    .modal .product-ref { font-size: .82rem; color: var(--gold-dark); font-weight: 700; margin-bottom: 20px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: .82rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border);
+      border-radius: var(--radius); font-size: .9rem; font-family: inherit;
+      color: var(--text-body); transition: var(--transition);
+      background: var(--white);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .modal-note { font-size: .78rem; color: var(--gray-400); margin-top: 14px; text-align: center; }
+
+    /* ---- Product count badge ---- */
+    .panel-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .panel-meta h3 { color: var(--navy); font-size: 1.1rem; }
+    .panel-count { font-size: .78rem; background: var(--gold-pale); color: var(--gold-dark); font-weight: 700; padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(201,168,76,.3); }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/logo/logo.png" alt="Shubh Enterprise"
+           class="logo-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="logo-fallback" style="display:none;">SE</div>
+      <div class="brand-text">
+        <span class="brand-name">Shubh Enterprise</span>
+        <span class="brand-sub">Laboratory Supplies</span>
+      </div>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="about.html" class="nav-link">
+          About Us
+          <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L1 3h10z"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="about.html#overview">Company Overview</a>
+          <a href="about.html#leadership">Leadership &amp; Team</a>
+          <a href="about.html#values">Our Values</a>
+          <a href="about.html#sectors">Sectors We Serve</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="products.html" class="nav-link active">
+          Products
+          <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L1 3h10z"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#" onclick="switchTab('consumables');return false;">Lab Consumables</a>
+          <a href="#" onclick="switchTab('ivf');return false;">IVF &amp; ART Supplies</a>
+          <a href="#" onclick="switchTab('bloodbank');return false;">Blood Bank Supplies</a>
+          <a href="#" onclick="switchTab('diagnostics');return false;">Diagnostic Reagents</a>
+          <a href="#" onclick="switchTab('pharma');return false;">Pharma &amp; QC Supplies</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="about.html#sectors" class="nav-link">Sectors</a></li>
+      <li class="nav-item"><a href="#" onclick="openInquiry('General Inquiry');return false;" class="nav-link nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero">
+  <div class="page-hero-bg" id="productsBg"
+       style="background-image:url('assets/images/hero/products-banner.jpg')"></div>
+  <span class="tag">Full Catalogue</span>
+  <h1>Our Products</h1>
+  <p>A comprehensive range of certified laboratory supplies — sourced for CROs, IVF clinics, blood banks, diagnostic centres, and pharmaceutical labs.</p>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>Products</span>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS CATALOGUE ===================== -->
+<section class="section" id="catalogue">
+  <div class="container">
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-tab="consumables">Lab Consumables</button>
+      <button class="filter-tab" data-tab="ivf">IVF &amp; ART Supplies</button>
+      <button class="filter-tab" data-tab="bloodbank">Blood Bank</button>
+      <button class="filter-tab" data-tab="diagnostics">Diagnostic Reagents</button>
+      <button class="filter-tab" data-tab="pharma">Pharma &amp; QC</button>
+      <button class="filter-tab" data-tab="safety">Safety &amp; PPE</button>
+    </div>
+
+    <!-- ===== TAB: Lab Consumables ===== -->
+    <div class="product-panel active" id="panel-consumables">
+      <div class="panel-meta">
+        <h3>General Laboratory Consumables</h3>
+        <span class="panel-count">12 Products</span>
+      </div>
+      <div class="product-grid">
+
+        <!-- Product card template — repeat for each product -->
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-1.jpg" alt="Microcentrifuge Tubes"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-1.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Microcentrifuge Tubes</h4>
+            <p>PCR-clean and standard grades for all centrifugation and storage needs.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">0.5 ml, 1.5 ml, 2 ml sizes</div>
+              <div class="product-highlight">PCR-clean &amp; standard grades</div>
+              <div class="product-highlight">Snap-lock &amp; screw-cap options</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Microcentrifuge Tubes')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Microcentrifuge Tubes — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-2.jpg" alt="Centrifuge Tubes"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-2.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Centrifuge Tubes</h4>
+            <p>Conical tubes for sample processing, separation, and storage workflows.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">15 ml &amp; 50 ml conical</div>
+              <div class="product-highlight">Sterile &amp; non-sterile</div>
+              <div class="product-highlight">Graduated, leak-proof cap</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Centrifuge Tubes')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Centrifuge Tubes — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-3.jpg" alt="Pipette Tips"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-3.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Pipette Tips</h4>
+            <p>Universal-fit, filter, and low-retention tips for all liquid handling systems.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Low retention &amp; filter tip variants</div>
+              <div class="product-highlight">All volumes: 0.1 µl – 1250 µl</div>
+              <div class="product-highlight">Universal &amp; brand-specific fit</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Pipette Tips')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Pipette Tips — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-4.jpg" alt="Serological Pipettes"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-4.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Serological Pipettes</h4>
+            <p>Individually wrapped, sterile pipettes for culture media transfer and cell work.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">1 ml to 50 ml</div>
+              <div class="product-highlight">Sterile, individually wrapped</div>
+              <div class="product-highlight">Colour-coded by volume</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Serological Pipettes')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Serological Pipettes — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-5.jpg" alt="Cell Culture Flasks"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-5.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Cell Culture Flasks</h4>
+            <p>TC-treated flasks for adherent and suspension cell culture applications.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">T-25, T-75, T-175 sizes</div>
+              <div class="product-highlight">Vented &amp; non-vented caps</div>
+              <div class="product-highlight">TC-treated surface</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Cell Culture Flasks')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Cell Culture Flasks — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-6.jpg" alt="Multiwell Plates"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-6.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Multiwell Plates</h4>
+            <p>Flat and round-bottom plates for assays, cell culture, and high-throughput screening.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">6, 12, 24, 48, 96 well</div>
+              <div class="product-highlight">Flat &amp; round bottom</div>
+              <div class="product-highlight">Sterile, TC-treated</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Multiwell Plates')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Multiwell Plates — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-7.jpg" alt="PCR Tubes &amp; Strips"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-7.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>PCR Tubes &amp; Strips</h4>
+            <p>Thin-wall tubes optimised for thermal cycling accuracy and lid sealing.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">0.2 ml single &amp; 8-strip</div>
+              <div class="product-highlight">Dome &amp; flat cap options</div>
+              <div class="product-highlight">RNase/DNase free</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('PCR Tubes &amp; Strips')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('PCR Tubes &amp; Strips — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/lab-consumables/product-8.jpg" alt="Cryogenic Vials"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-8.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Cryogenic Vials</h4>
+            <p>Designed for long-term storage of cells and biological samples in liquid nitrogen.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Internal &amp; external thread</div>
+              <div class="product-highlight">1.8 ml &amp; 2 ml</div>
+              <div class="product-highlight">LN2 compatible</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Cryogenic Vials')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Cryogenic Vials — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /consumables -->
+
+    <!-- ===== TAB: IVF / ART ===== -->
+    <div class="product-panel" id="panel-ivf">
+      <div class="panel-meta">
+        <h3>IVF &amp; Assisted Reproduction (ART) Supplies</h3>
+        <span class="panel-count">10 Products</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/ivf/product-1.jpg" alt="Embryo Culture Media"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-1.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Embryo Culture Media</h4>
+            <p>Sequential and single-step formulations tested for mouse embryo development.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Sequential &amp; single-step</div>
+              <div class="product-highlight">Mouse embryo tested</div>
+              <div class="product-highlight">Ready-to-use</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Embryo Culture Media')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Embryo Culture Media — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/ivf/product-2.jpg" alt="Vitrification Kits"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-2.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Vitrification Kits</h4>
+            <p>Oocyte and embryo vitrification cryoprotectant sets with high survival rates.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Oocyte &amp; embryo grade</div>
+              <div class="product-highlight">Optimised cryoprotectant mix</div>
+              <div class="product-highlight">Compatible with major protocols</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Vitrification Kits')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Vitrification Kits — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/ivf/product-3.jpg" alt="IVF Dishes &amp; Plates"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-3.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>IVF Dishes &amp; Plates</h4>
+            <p>Embryo-grade culture dishes for fertilisation, culture, and observation.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">WOW dishes, 4-well plates</div>
+              <div class="product-highlight">Nunclon Delta surface</div>
+              <div class="product-highlight">Embryo grade certified</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('IVF Dishes &amp; Plates')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('IVF Dishes — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/ivf/product-4.jpg" alt="Embryo Transfer Catheters"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-4.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Embryo Transfer Catheters</h4>
+            <p>Soft and firm tip catheters for precise intrauterine embryo transfer.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Soft &amp; firm tip variants</div>
+              <div class="product-highlight">Various lengths available</div>
+              <div class="product-highlight">Sterile, single-use</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Embryo Transfer Catheters')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('ET Catheters — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/ivf/product-5.jpg" alt="Follicle Aspiration Needles"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-5.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>Follicle Aspiration Needles</h4>
+            <p>Single and double-lumen needles for ultrasound-guided oocyte retrieval.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Single &amp; double lumen</div>
+              <div class="product-highlight">16G – 19G</div>
+              <div class="product-highlight">Echogenic tip coating</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Follicle Aspiration Needles')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Aspiration Needles — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="assets/images/products/ivf/product-6.jpg" alt="ICSI Needles"
+                 onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-6.jpg</span></div>'" />
+          </div>
+          <div class="product-card-body">
+            <h4>ICSI Needles &amp; Holding Pipettes</h4>
+            <p>Precision micromanipulation tools for intracytoplasmic sperm injection.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Laser-pulled borosilicate</div>
+              <div class="product-highlight">Fire-polished holding pipettes</div>
+              <div class="product-highlight">Sterile, individually packed</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('ICSI Needles &amp; Holding Pipettes')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('ICSI Tools — Quote Request')">Get Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /ivf -->
+
+    <!-- ===== TAB: Blood Bank ===== -->
+    <div class="product-panel" id="panel-bloodbank">
+      <div class="panel-meta">
+        <h3>Blood Bank &amp; Transfusion Medicine Supplies</h3>
+        <span class="panel-count">9 Products</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/bloodbank/product-1.jpg" alt="Blood Collection Bags" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-1.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Blood Collection Bags</h4>
+            <p>Single, double, triple and quadruple collection bags for whole blood and components.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">CPDA-1, SAG-M anticoagulants</div>
+              <div class="product-highlight">Single to quadruple bag systems</div>
+              <div class="product-highlight">CDSCO approved</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Blood Collection Bags')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Blood Collection Bags — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/bloodbank/product-2.jpg" alt="Blood Grouping Reagents" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-2.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Blood Grouping Reagents</h4>
+            <p>Monoclonal reagents for ABO and Rh blood group determination.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Anti-A, Anti-B, Anti-D, Anti-AB</div>
+              <div class="product-highlight">Monoclonal IgM &amp; IgG blend</div>
+              <div class="product-highlight">High avidity and specificity</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Blood Grouping Reagents')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Grouping Reagents — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/bloodbank/product-3.jpg" alt="NAT Screening Kits" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-3.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>NAT Screening Kits</h4>
+            <p>Nucleic acid testing kits for HIV, HBV, and HCV donor screening.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">HIV, HBV, HCV detection</div>
+              <div class="product-highlight">Multiplex &amp; individual</div>
+              <div class="product-highlight">High sensitivity assays</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('NAT Screening Kits')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('NAT Kits — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/bloodbank/product-4.jpg" alt="Gel Cards" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-4.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Blood Grouping Gel Cards</h4>
+            <p>Column agglutination technology cards for automated and semi-automated typing.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">ABO/Rh &amp; antibody screening</div>
+              <div class="product-highlight">Compatible with major analysers</div>
+              <div class="product-highlight">Stable, easy to read results</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Blood Grouping Gel Cards')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Gel Cards — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /bloodbank -->
+
+    <!-- ===== TAB: Diagnostics ===== -->
+    <div class="product-panel" id="panel-diagnostics">
+      <div class="panel-meta">
+        <h3>Diagnostic Reagents &amp; Kits</h3>
+        <span class="panel-count">10 Products</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/diagnostics/product-1.jpg" alt="Biochemistry Reagents" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-1.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Biochemistry Reagents</h4>
+            <p>Comprehensive panels for glucose, lipid profile, liver and kidney function.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">LFT, KFT, lipid profile panels</div>
+              <div class="product-highlight">Analyser-compatible formats</div>
+              <div class="product-highlight">Ready-to-use liquid form</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Biochemistry Reagents')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Biochemistry Reagents — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/diagnostics/product-2.jpg" alt="HbA1c Kits" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-2.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>HbA1c Kits</h4>
+            <p>Glycated haemoglobin kits for diabetes monitoring and management.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">HPLC &amp; immunoturbidimetric</div>
+              <div class="product-highlight">NGSP/IFCC aligned</div>
+              <div class="product-highlight">Point-of-care &amp; lab formats</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('HbA1c Kits')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('HbA1c Kits — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/diagnostics/product-3.jpg" alt="Infectious Disease Kits" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-3.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Infectious Disease Kits</h4>
+            <p>Rapid and ELISA-based kits for dengue, malaria, typhoid, and more.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Dengue NS1/IgM/IgG</div>
+              <div class="product-highlight">Malaria RDTs &amp; ELISA</div>
+              <div class="product-highlight">Typhoid, Widal, Leptospira</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Infectious Disease Kits')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('ID Kits — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/diagnostics/product-4.jpg" alt="PCR Master Mixes" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-4.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>PCR Master Mixes</h4>
+            <p>Optimised mixes for standard, real-time, and reverse-transcription PCR.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Taq, Hot-Start, RT-PCR, qPCR</div>
+              <div class="product-highlight">2x concentrated formats</div>
+              <div class="product-highlight">Inhibitor-tolerant formulations</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('PCR Master Mixes')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('PCR Mixes — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /diagnostics -->
+
+    <!-- ===== TAB: Pharma ===== -->
+    <div class="product-panel" id="panel-pharma">
+      <div class="panel-meta">
+        <h3>Pharmaceutical &amp; QC Laboratory Supplies</h3>
+        <span class="panel-count">9 Products</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/pharma/product-1.jpg" alt="HPLC Columns" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-1.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>HPLC Columns</h4>
+            <p>Reversed-phase, normal-phase, and ion-exchange columns for analytical method development.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">C18, C8, amino, phenyl phases</div>
+              <div class="product-highlight">Various particle sizes &amp; dimensions</div>
+              <div class="product-highlight">USP method compliant</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('HPLC Columns')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('HPLC Columns — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/pharma/product-2.jpg" alt="Reference Standards" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-2.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Reference Standards</h4>
+            <p>Certified pharmacopoeial reference standards for QC and method validation.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">BP, USP, EP certified</div>
+              <div class="product-highlight">CoA &amp; traceability documents</div>
+              <div class="product-highlight">Wide drug molecule range</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Reference Standards')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Reference Standards — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/pharma/product-3.jpg" alt="Sterility Testing Kits" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-3.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Sterility Testing Kits</h4>
+            <p>Membrane filtration systems and culture media for USP/EP sterility tests.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Membrane filtration assemblies</div>
+              <div class="product-highlight">FTM &amp; SCDA media included</div>
+              <div class="product-highlight">USP/EP compliant</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Sterility Testing Kits')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Sterility Kits — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/pharma/product-4.jpg" alt="Endotoxin Testing" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>product-4.jpg</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Endotoxin Testing (LAL)</h4>
+            <p>Limulus Amebocyte Lysate kits for bacterial endotoxin quantification.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Kinetic turbidimetric &amp; gel-clot</div>
+              <div class="product-highlight">FDA 21 CFR Part 11 compliant</div>
+              <div class="product-highlight">Recombinant Factor C option</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Endotoxin Testing (LAL)')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('LAL Kits — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /pharma -->
+
+    <!-- ===== TAB: Safety & PPE ===== -->
+    <div class="product-panel" id="panel-safety">
+      <div class="panel-meta">
+        <h3>Safety, PPE &amp; Lab Hygiene</h3>
+        <span class="panel-count">8 Products</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/lab-consumables/product-1.jpg" alt="Nitrile Gloves" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Nitrile Gloves</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Nitrile Examination Gloves</h4>
+            <p>Powder-free, textured nitrile gloves for laboratory and clinical use.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">S, M, L, XL sizes</div>
+              <div class="product-highlight">100 pcs/box</div>
+              <div class="product-highlight">ASTM D6319 certified</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Nitrile Gloves')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Nitrile Gloves — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/lab-consumables/product-2.jpg" alt="Safety Goggles" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Safety Goggles</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Safety Goggles &amp; Face Shields</h4>
+            <p>Chemical splash-rated eye protection with anti-fog coating.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">EN 166 &amp; ANSI Z87.1 rated</div>
+              <div class="product-highlight">Anti-fog, anti-scratch coating</div>
+              <div class="product-highlight">Full-face shields available</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Safety Goggles &amp; Face Shields')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Safety Goggles — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/lab-consumables/product-3.jpg" alt="Biosafety Bags" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Biosafety Bags</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Biosafety &amp; Autoclave Bags</h4>
+            <p>Yellow biohazard-marked autoclave bags for biomedical waste disposal.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">Various sizes available</div>
+              <div class="product-highlight">Autoclave indicator strips</div>
+              <div class="product-highlight">Biohazard symbol printed</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Biosafety Autoclave Bags')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Biosafety Bags — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-img"><img src="assets/images/products/lab-consumables/product-4.jpg" alt="Sharps Containers" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'height:100%\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Sharps Containers</span></div>'" /></div>
+          <div class="product-card-body">
+            <h4>Sharps Containers</h4>
+            <p>Puncture-proof, tamper-evident containers for safe needle disposal.</p>
+            <div class="product-highlights">
+              <div class="product-highlight">1 L and 5 L sizes</div>
+              <div class="product-highlight">Tamper-evident lid</div>
+              <div class="product-highlight">CPCB compliant</div>
+            </div>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-gold btn-sm" onclick="openInquiry('Sharps Containers')">Enquire Now</button>
+            <button class="btn btn-outline-gold btn-sm" onclick="openInquiry('Sharps Containers — Quote')">Get Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /safety -->
+
+  </div>
+</section>
+
+<!-- ===================== BULK INQUIRY CTA ===================== -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="tag">Custom Orders &amp; Bulk Enquiries</span>
+    <h2>Can't Find What You Need?</h2>
+    <p>Our catalogue is extensive but not exhaustive. We can source specific products, arrange bulk pricing, and advise on alternatives.</p>
+    <div class="btn-row">
+      <button class="btn btn-gold" onclick="openInquiry('General Product Inquiry')">Send an Enquiry</button>
+      <a href="mailto:info@shubhenterprise.in" class="btn btn-outline-white">Email Us Directly</a>
+    </div>
+    <div class="cta-contacts">
+      <div class="cta-contact-item">📧 <span>Email: <strong>info@shubhenterprise.in</strong></span></div>
+      <div class="cta-contact-item">📞 <span>Phone: <strong>+91 XXXXX XXXXX</strong></span></div>
+      <div class="cta-contact-item">📍 <span>Location: <strong>India</strong></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="fl-icon">
+            <img src="assets/images/logo/logo-white.png" alt="SE"
+                 onerror="this.style.display='none'; this.parentElement.textContent='SE';" />
+          </div>
+          <div>
+            <div class="fl-name">Shubh Enterprise</div>
+            <div class="fl-sub">Laboratory Supplies</div>
+          </div>
+        </div>
+        <p>Your trusted trading partner for laboratory consumables, diagnostic reagents, IVF &amp; ART supplies, and pharmaceutical testing materials across India's life sciences sector.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer-social" aria-label="Facebook">f</a>
+          <a href="#" class="footer-social" aria-label="Instagram">&#x2665;</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html#overview">About Us</a></li>
+          <li><a href="about.html#leadership">Leadership &amp; Team</a></li>
+          <li><a href="about.html#values">Our Values</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <ul>
+          <li><a href="#" onclick="switchTab('consumables');return false;">Lab Consumables</a></li>
+          <li><a href="#" onclick="switchTab('ivf');return false;">IVF &amp; ART</a></li>
+          <li><a href="#" onclick="switchTab('bloodbank');return false;">Blood Bank</a></li>
+          <li><a href="#" onclick="switchTab('diagnostics');return false;">Diagnostics</a></li>
+          <li><a href="#" onclick="switchTab('pharma');return false;">Pharma &amp; QC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <div class="footer-contact-item">
+          <span class="ico">📧</span>
+          <a href="mailto:info@shubhenterprise.in">info@shubhenterprise.in</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="ico">📞</span>
+          <a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="ico">📍</span>
+          <p>India</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Shubh Enterprise. All rights reserved.</p>
+      <p>Laboratory Supplies &amp; Medical Consumables</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== INQUIRY MODAL ===================== -->
+<div class="modal-overlay" id="inquiryModal" onclick="closeInquiry(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeInquiry(null)" aria-label="Close">&times;</button>
+    <h3>Product Enquiry</h3>
+    <div class="product-ref" id="modalProductRef">General Inquiry</div>
+    <form onsubmit="submitInquiry(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" placeholder="Dr. / Mr. / Ms. Name" required />
+        </div>
+        <div class="form-group">
+          <label>Organisation *</label>
+          <input type="text" placeholder="Lab / Hospital / Company" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" placeholder="you@organisation.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Sector</label>
+        <select>
+          <option value="">Select your sector...</option>
+          <option>CRO / Research Lab</option>
+          <option>IVF / ART Centre</option>
+          <option>Blood Bank</option>
+          <option>Diagnostic / Pathology Lab</option>
+          <option>Pharmaceutical Company</option>
+          <option>Hospital / Clinical Lab</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message / Specifications</label>
+        <textarea placeholder="Please describe the product, quantity, grade required, or any specific details..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">
+        Send Enquiry &rarr;
+      </button>
+      <p class="modal-note">We respond to all enquiries within 24 business hours.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Hero bg
+  const bg = document.getElementById('productsBg');
+  const bImg = new Image();
+  bImg.onload = () => bg.classList.add('loaded');
+  bImg.src = 'assets/images/hero/products-banner.jpg';
+
+  // Tab switching
+  function switchTab(tab) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+    const btn = document.querySelector(`[data-tab="${tab}"]`);
+    if (btn) btn.classList.add('active');
+    const panel = document.getElementById(`panel-${tab}`);
+    if (panel) {
+      panel.classList.add('active');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Tab buttons
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  });
+
+  // Read URL param on load
+  const urlCat = new URLSearchParams(window.location.search).get('cat');
+  if (urlCat) switchTab(urlCat);
+
+  // Inquiry modal
+  function openInquiry(product) {
+    document.getElementById('modalProductRef').textContent = product || 'General Inquiry';
+    document.getElementById('inquiryModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeInquiry(e) {
+    if (!e || e.target === document.getElementById('inquiryModal')) {
+      document.getElementById('inquiryModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  function submitInquiry(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = '✓ Enquiry Sent! We\'ll be in touch.';
+    btn.style.background = '#16a34a';
+    btn.disabled = true;
+    setTimeout(() => closeInquiry(null), 2500);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeInquiry(null);
+  });
+</script>
+</body>
+</html>
