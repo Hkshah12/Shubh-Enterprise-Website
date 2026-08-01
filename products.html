@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shubh Enterprise product catalogue — laboratory consumables, IVF supplies, blood bank products, diagnostic reagents, and pharmaceutical testing materials." />
+  <meta name="description" content="Shubh Enterprise product catalogue — laboratory consumables, IVF supplies, blood bank products, diagnostic reagents and pharmaceutical testing materials." />
   <title>Products | Shubh Enterprise</title>
+  <script>document.documentElement.className+=' js';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,29 +18,33 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <img src="images/logo.png" alt="Shubh Enterprise Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" onerror="this.outerHTML='SE'" />
-        </div>
-        <div class="logo-text">
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 3h6M10 3v5.5L5.5 17a2.5 2.5 0 0 0 2.3 3.5h8.4A2.5 2.5 0 0 0 18.5 17L14 8.5V3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 14c2.2-.4 3.4-2 3.6-4-2 .2-3.4 1.4-3.6 4z" fill="#4ADE80"/>
+          </svg>
+        </span>
+        <span class="logo-text">
           <span class="logo-name">Shubh Enterprise</span>
           <span class="logo-tag">Laboratory Supplies</span>
-        </div>
+        </span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="products.html" class="active">Products</a></li>
+        <li class="hide-mobile"><a href="index.html">Home</a></li>
+        <li class="hide-mobile"><a href="about.html">About Us</a></li>
+        <li class="hide-mobile"><a href="products.html" class="active">Products</a></li>
         <li><a href="#enquire" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- PAGE HERO -->
-  <section class="products-hero">
+  <section class="page-hero">
+    <div class="page-dots dotgrid"></div>
     <div class="container">
-      <span class="section-tag">Full Catalogue</span>
-      <h1>Our Products</h1>
-      <p>A comprehensive range of laboratory supplies sourced from certified manufacturers — built for CROs, IVF clinics, blood banks, diagnostic labs, and pharma companies.</p>
+      <span class="section-tag reveal">Full Catalogue</span>
+      <h1 class="reveal">Our Products</h1>
+      <p class="reveal">A comprehensive range of laboratory supplies sourced from certified manufacturers — built for CROs, IVF clinics, blood banks, diagnostic labs and pharma companies.</p>
     </div>
   </section>
 
@@ -45,137 +54,137 @@
 
       <!-- Category 1: Lab Consumables -->
       <div class="product-category">
-        <div class="cat-header">
-          <div class="cat-header-icon">&#x1F9F4;</div>
+        <div class="cat-header reveal">
+          <div class="cat-header-icon"><i class="ph ph-flask"></i></div>
           <div>
             <h2>General Laboratory Consumables</h2>
             <p>Everyday essentials for any laboratory workflow</p>
           </div>
         </div>
         <div class="products-list">
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Microcentrifuge Tubes</h4><p>0.5 ml, 1.5 ml, 2 ml — PCR-clean &amp; standard grades</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Centrifuge Tubes</h4><p>15 ml &amp; 50 ml conical, sterile &amp; non-sterile</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Pipette Tips</h4><p>Low retention, filter tips, universal fit — all volumes</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Serological Pipettes</h4><p>1 ml to 50 ml, individually wrapped</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Cell Culture Flasks</h4><p>T-25, T-75, T-175 — vented &amp; non-vented caps</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Multiwell Plates</h4><p>6, 12, 24, 48, 96 well — flat &amp; round bottom</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Petri Dishes</h4><p>35 mm, 60 mm, 100 mm — sterile, TC-treated</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Syringe Filters</h4><p>PVDF, Nylon, PES, MCE — 0.2 µm &amp; 0.45 µm</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Cryogenic Vials</h4><p>Internal &amp; external thread, 1.8 ml &amp; 2 ml</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>PCR Tubes &amp; Strips</h4><p>0.2 ml single, 8-strip, dome &amp; flat caps</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Beakers, Flasks &amp; Cylinders</h4><p>Borosilicate glass — various volumes</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Reagent Reservoirs</h4><p>Multichannel compatible, 25 ml &amp; 100 ml</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Microcentrifuge Tubes</h4><p>0.5 ml, 1.5 ml, 2 ml — PCR-clean &amp; standard grades</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Centrifuge Tubes</h4><p>15 ml &amp; 50 ml conical, sterile &amp; non-sterile</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Pipette Tips</h4><p>Low retention, filter tips, universal fit — all volumes</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Serological Pipettes</h4><p>1 ml to 50 ml, individually wrapped</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Cell Culture Flasks</h4><p>T-25, T-75, T-175 — vented &amp; non-vented caps</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Multiwell Plates</h4><p>6, 12, 24, 48, 96 well — flat &amp; round bottom</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Petri Dishes</h4><p>35 mm, 60 mm, 100 mm — sterile, TC-treated</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Syringe Filters</h4><p>PVDF, Nylon, PES, MCE — 0.2 µm &amp; 0.45 µm</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Cryogenic Vials</h4><p>Internal &amp; external thread, 1.8 ml &amp; 2 ml</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>PCR Tubes &amp; Strips</h4><p>0.2 ml single, 8-strip, dome &amp; flat caps</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Beakers, Flasks &amp; Cylinders</h4><p>Borosilicate glass — various volumes</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Reagent Reservoirs</h4><p>Multichannel compatible, 25 ml &amp; 100 ml</p></div></div>
         </div>
       </div>
 
       <!-- Category 2: IVF / ART -->
       <div class="product-category">
-        <div class="cat-header">
-          <div class="cat-header-icon">&#x1F9EC;</div>
+        <div class="cat-header reveal">
+          <div class="cat-header-icon"><i class="ph ph-dna"></i></div>
           <div>
             <h2>IVF &amp; Assisted Reproduction (ART) Supplies</h2>
             <p>Specialised products for embryology labs and fertility clinics</p>
           </div>
         </div>
         <div class="products-list">
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Embryo Culture Media</h4><p>Sequential &amp; single-step formulations, ready-to-use</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Sperm Preparation Media</h4><p>Density gradients, swim-up media</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Vitrification Kits</h4><p>Oocyte &amp; embryo vitrification — cryoprotectant sets</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Warming Kits</h4><p>Compatible with major vitrification protocols</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>IVF Dishes &amp; Plates</h4><p>Nunclon Delta, WOW dishes, 4-well plates — embryo grade</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Embryo Transfer Catheters</h4><p>Soft &amp; firm tip, various lengths</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Follicle Aspiration Needles</h4><p>Single &amp; double lumen, 16G–19G</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>ICSI Needles &amp; Holding Pipettes</h4><p>Laser-pulled, fire-polished</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Mineral Oil (Embryo Grade)</h4><p>Mouse-embryo tested, low-evaporation</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Cryostorage Devices</h4><p>Straws, CBS high security straws, goblets, canisters</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Embryo Culture Media</h4><p>Sequential &amp; single-step formulations, ready-to-use</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Sperm Preparation Media</h4><p>Density gradients, swim-up media</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Vitrification Kits</h4><p>Oocyte &amp; embryo vitrification — cryoprotectant sets</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Warming Kits</h4><p>Compatible with major vitrification protocols</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>IVF Dishes &amp; Plates</h4><p>Nunclon Delta, WOW dishes, 4-well plates — embryo grade</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Embryo Transfer Catheters</h4><p>Soft &amp; firm tip, various lengths</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Follicle Aspiration Needles</h4><p>Single &amp; double lumen, 16G–19G</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>ICSI Needles &amp; Holding Pipettes</h4><p>Laser-pulled, fire-polished</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Mineral Oil (Embryo Grade)</h4><p>Mouse-embryo tested, low-evaporation</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Cryostorage Devices</h4><p>Straws, CBS high security straws, goblets, canisters</p></div></div>
         </div>
       </div>
 
       <!-- Category 3: Blood Bank -->
       <div class="product-category">
-        <div class="cat-header">
-          <div class="cat-header-icon">&#x1FA78;</div>
+        <div class="cat-header reveal">
+          <div class="cat-header-icon"><i class="ph ph-drop"></i></div>
           <div>
             <h2>Blood Bank &amp; Transfusion Medicine Supplies</h2>
-            <p>Reliable products for safe blood collection, processing, and testing</p>
+            <p>Reliable products for safe blood collection, processing and testing</p>
           </div>
         </div>
         <div class="products-list">
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Collection Bags</h4><p>Single, double, triple &amp; quadruple — CPDA-1, SAG-M</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Grouping Reagents</h4><p>Anti-A, Anti-B, Anti-D, Anti-AB — monoclonal</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Cross-matching Kits</h4><p>Saline, albumin &amp; indirect antiglobulin test (IAT)</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Coombs Reagent (AHG)</h4><p>Polyspecific &amp; monospecific anti-human globulin</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Grouping Cards / Gel Cards</h4><p>For automated &amp; semi-automated grouping systems</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>NAT Screening Kits</h4><p>HIV, HBV, HCV nucleic acid testing</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>TTI Screening Kits</h4><p>Transfusion-transmitted infection ELISA kits</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Platelet Bags &amp; Agitators</h4><p>PVC platelet storage bags, flat-bed agitators</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Bank Tubes (EDTA, Citrate)</h4><p>Vacutainer-type collection tubes</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Collection Bags</h4><p>Single, double, triple &amp; quadruple — CPDA-1, SAG-M</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Grouping Reagents</h4><p>Anti-A, Anti-B, Anti-D, Anti-AB — monoclonal</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Cross-matching Kits</h4><p>Saline, albumin &amp; indirect antiglobulin test (IAT)</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Coombs Reagent (AHG)</h4><p>Polyspecific &amp; monospecific anti-human globulin</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Grouping Cards / Gel Cards</h4><p>For automated &amp; semi-automated grouping systems</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>NAT Screening Kits</h4><p>HIV, HBV, HCV nucleic acid testing</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>TTI Screening Kits</h4><p>Transfusion-transmitted infection ELISA kits</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Platelet Bags &amp; Agitators</h4><p>PVC platelet storage bags, flat-bed agitators</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Blood Bank Tubes (EDTA, Citrate)</h4><p>Vacutainer-type collection tubes</p></div></div>
         </div>
       </div>
 
       <!-- Category 4: Diagnostic Reagents -->
       <div class="product-category">
-        <div class="cat-header">
-          <div class="cat-header-icon">&#x1F52C;</div>
+        <div class="cat-header reveal">
+          <div class="cat-header-icon"><i class="ph ph-microscope"></i></div>
           <div>
             <h2>Diagnostic Reagents &amp; Kits</h2>
-            <p>For biochemistry, haematology, immunology, and molecular diagnostics</p>
+            <p>For biochemistry, haematology, immunology and molecular diagnostics</p>
           </div>
         </div>
         <div class="products-list">
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Biochemistry Reagents</h4><p>Glucose, lipid profile, liver function, kidney function panels</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Haematology Controls &amp; Reagents</h4><p>CBC reagents, diluents, lyse solutions</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>HbA1c Kits</h4><p>HPLC &amp; immunoturbidimetric methods</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Thyroid Function (TSH, T3, T4)</h4><p>ELISA &amp; CLIA-based assay kits</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Infectious Disease Kits</h4><p>Dengue NS1/IgM/IgG, Malaria RDTs, Typhoid</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Tumour Marker Kits</h4><p>PSA, CEA, AFP, CA 125, CA 19-9</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Coagulation Reagents</h4><p>PT, APTT, fibrinogen, D-Dimer</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Urine Analysis Strips &amp; Reagents</h4><p>10-parameter dipsticks, calibrators</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>PCR Master Mixes</h4><p>Taq, Hot-Start, RT-PCR, qPCR formulations</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>ELISA Kits</h4><p>Sandwich &amp; competitive formats — various analytes</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Biochemistry Reagents</h4><p>Glucose, lipid profile, liver &amp; kidney function panels</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Haematology Controls &amp; Reagents</h4><p>CBC reagents, diluents, lyse solutions</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>HbA1c Kits</h4><p>HPLC &amp; immunoturbidimetric methods</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Thyroid Function (TSH, T3, T4)</h4><p>ELISA &amp; CLIA-based assay kits</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Infectious Disease Kits</h4><p>Dengue NS1/IgM/IgG, Malaria RDTs, Typhoid</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Tumour Marker Kits</h4><p>PSA, CEA, AFP, CA 125, CA 19-9</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Coagulation Reagents</h4><p>PT, APTT, fibrinogen, D-Dimer</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Urine Analysis Strips &amp; Reagents</h4><p>10-parameter dipsticks, calibrators</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>PCR Master Mixes</h4><p>Taq, Hot-Start, RT-PCR, qPCR formulations</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>ELISA Kits</h4><p>Sandwich &amp; competitive formats — various analytes</p></div></div>
         </div>
       </div>
 
       <!-- Category 5: Pharmaceutical -->
       <div class="product-category">
-        <div class="cat-header">
-          <div class="cat-header-icon">&#x1F48A;</div>
+        <div class="cat-header reveal">
+          <div class="cat-header-icon"><i class="ph ph-pill"></i></div>
           <div>
             <h2>Pharmaceutical &amp; QC Laboratory Supplies</h2>
             <p>Testing materials and consumables for pharma QC and R&amp;D labs</p>
           </div>
         </div>
         <div class="products-list">
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>HPLC Columns</h4><p>C18, C8, amino, phenyl phases — various dimensions</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>HPLC Solvents (HPLC Grade)</h4><p>Acetonitrile, methanol, water, hexane</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Reference Standards</h4><p>BP, USP, EP certified reference standards</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Microbiology Media</h4><p>TSB, TSA, SCDA, FTM — dehydrated &amp; ready-to-use</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Sterility Testing Kits</h4><p>Membrane filtration assemblies, culture media</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Endotoxin Testing (LAL)</h4><p>Kinetic turbidimetric &amp; gel-clot kits</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>pH Buffers &amp; Calibration Solutions</h4><p>pH 4.0, 7.0, 10.0 — certified</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Dissolution Vessels &amp; Paddles</h4><p>USP compliant, borosilicate glass</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Weighing Boats &amp; Spatulas</h4><p>Anti-static, various sizes</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>HPLC Columns</h4><p>C18, C8, amino, phenyl phases — various dimensions</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>HPLC Solvents (HPLC Grade)</h4><p>Acetonitrile, methanol, water, hexane</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Reference Standards</h4><p>BP, USP, EP certified reference standards</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Microbiology Media</h4><p>TSB, TSA, SCDA, FTM — dehydrated &amp; ready-to-use</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Sterility Testing Kits</h4><p>Membrane filtration assemblies, culture media</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Endotoxin Testing (LAL)</h4><p>Kinetic turbidimetric &amp; gel-clot kits</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>pH Buffers &amp; Calibration Solutions</h4><p>pH 4.0, 7.0, 10.0 — certified</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Dissolution Vessels &amp; Paddles</h4><p>USP compliant, borosilicate glass</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Weighing Boats &amp; Spatulas</h4><p>Anti-static, various sizes</p></div></div>
         </div>
       </div>
 
       <!-- Category 6: Safety & PPE -->
       <div class="product-category">
-        <div class="cat-header">
-          <div class="cat-header-icon">&#x1F6E1;&#xFE0F;</div>
+        <div class="cat-header reveal">
+          <div class="cat-header-icon"><i class="ph ph-shield-check"></i></div>
           <div>
             <h2>Safety, PPE &amp; Lab Hygiene</h2>
             <p>Personal protection and biosafety essentials for every lab environment</p>
           </div>
         </div>
         <div class="products-list">
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Nitrile Examination Gloves</h4><p>Powder-free, S/M/L/XL — 100 pcs/box</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Laboratory Coats</h4><p>Fluid-resistant, reusable &amp; disposable</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Safety Goggles &amp; Face Shields</h4><p>Chemical splash rated, anti-fog coated</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>N95 &amp; Surgical Masks</h4><p>ASTM &amp; BIS certified</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Biosafety Bags</h4><p>Yellow biohazard autoclave bags — various sizes</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Sharps Containers</h4><p>Puncture-proof, 1 L &amp; 5 L</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Disinfectants &amp; Detergents</h4><p>Lab-grade, broad-spectrum surface disinfectants</p></div></div>
-          <div class="product-item"><div class="product-dot"></div><div class="product-item-text"><h4>Absorbent Bench Paper</h4><p>Chemical-resistant, disposable rolls</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Nitrile Examination Gloves</h4><p>Powder-free, S/M/L/XL — 100 pcs/box</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Laboratory Coats</h4><p>Fluid-resistant, reusable &amp; disposable</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Safety Goggles &amp; Face Shields</h4><p>Chemical splash rated, anti-fog coated</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>N95 &amp; Surgical Masks</h4><p>ASTM &amp; BIS certified</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Biosafety Bags</h4><p>Yellow biohazard autoclave bags — various sizes</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Sharps Containers</h4><p>Puncture-proof, 1 L &amp; 5 L</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Disinfectants &amp; Detergents</h4><p>Lab-grade, broad-spectrum surface disinfectants</p></div></div>
+          <div class="product-item reveal"><div class="product-dot"></div><div class="product-item-text"><h4>Absorbent Bench Paper</h4><p>Chemical-resistant, disposable rolls</p></div></div>
         </div>
       </div>
 
@@ -184,15 +193,16 @@
 
   <!-- ENQUIRY CTA -->
   <section class="cta-section" id="enquire">
+    <div class="cta-dots"></div>
     <div class="container">
-      <span class="section-tag">Request a Quote</span>
-      <h2>Can't Find What You Need?</h2>
-      <p>Our catalogue is extensive but not exhaustive. Contact us directly — we can source specific products, arrange bulk pricing, and advise on alternatives.</p>
-      <a href="mailto:info@shubhenterprise.in" class="btn btn-primary">&#x1F4E7; &nbsp;Email Us for a Quote</a>
+      <span class="section-tag reveal">Request a Quote</span>
+      <h2 class="reveal">Can't Find What You Need?</h2>
+      <p class="reveal">Our catalogue is extensive but not exhaustive. Contact us directly — we can source specific products, arrange bulk pricing and advise on alternatives.</p>
+      <a href="mailto:info@shubhenterprise.in" class="btn btn-light reveal"><i class="ph ph-envelope-simple"></i> Email Us for a Quote</a>
       <div class="cta-contact">
-        <div class="cta-contact-item">&#x1F4E7; <span>Email: <strong>info@shubhenterprise.in</strong></span></div>
-        <div class="cta-contact-item">&#x1F4DE; <span>Phone: <strong>+91 XXXXX XXXXX</strong></span></div>
-        <div class="cta-contact-item">&#x1F4CD; <span>Location: <strong>India</strong></span></div>
+        <div class="cta-contact-item"><i class="ph ph-envelope-simple"></i> <span>Email: <strong>info@shubhenterprise.in</strong></span></div>
+        <div class="cta-contact-item"><i class="ph ph-phone"></i> <span>Phone: <strong>+91 XXXXX XXXXX</strong></span></div>
+        <div class="cta-contact-item"><i class="ph ph-map-pin"></i> <span>Location: <strong>India</strong></span></div>
       </div>
     </div>
   </section>
@@ -203,15 +213,18 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo">
-            <div class="logo-icon">
-              <img src="images/logo.png" alt="Shubh Enterprise Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" onerror="this.outerHTML='SE'" />
-            </div>
-            <div class="logo-text">
-              <span class="logo-name" style="color:#fff;">Shubh Enterprise</span>
+            <span class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 3h6M10 3v5.5L5.5 17a2.5 2.5 0 0 0 2.3 3.5h8.4A2.5 2.5 0 0 0 18.5 17L14 8.5V3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 14c2.2-.4 3.4-2 3.6-4-2 .2-3.4 1.4-3.6 4z" fill="#4ADE80"/>
+              </svg>
+            </span>
+            <span class="logo-text">
+              <span class="logo-name">Shubh Enterprise</span>
               <span class="logo-tag">Laboratory Supplies</span>
-            </div>
+            </span>
           </div>
-          <p>Your trusted partner for laboratory consumables, diagnostic reagents, and medical supplies across India's life sciences sector.</p>
+          <p>Your trusted partner for laboratory consumables, diagnostic reagents and medical supplies across India's life sciences sector.</p>
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
@@ -224,11 +237,11 @@
         <div class="footer-col">
           <h4>Sectors</h4>
           <ul>
-            <li><a href="#">CROs &amp; Research</a></li>
-            <li><a href="#">IVF Centers</a></li>
-            <li><a href="#">Blood Banks</a></li>
-            <li><a href="#">Diagnostic Labs</a></li>
-            <li><a href="#">Pharmaceuticals</a></li>
+            <li><a href="products.html">CROs &amp; Research</a></li>
+            <li><a href="products.html">IVF Centers</a></li>
+            <li><a href="products.html">Blood Banks</a></li>
+            <li><a href="products.html">Diagnostic Labs</a></li>
+            <li><a href="products.html">Pharmaceuticals</a></li>
           </ul>
         </div>
       </div>
@@ -239,11 +252,6 @@
     </div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-  </script>
+  <script src="motion.js"></script>
 </body>
 </html>

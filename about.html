@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About Shubh Enterprise — our story, mission, values, and the sectors we serve across India's life sciences industry." />
+  <meta name="description" content="About Shubh Enterprise — our story, mission, values and the life-sciences sectors we serve across India." />
   <title>About Us | Shubh Enterprise</title>
+  <script>document.documentElement.className+=' js';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,29 +18,33 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <img src="images/logo.png" alt="Shubh Enterprise Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" onerror="this.outerHTML='SE'" />
-        </div>
-        <div class="logo-text">
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 3h6M10 3v5.5L5.5 17a2.5 2.5 0 0 0 2.3 3.5h8.4A2.5 2.5 0 0 0 18.5 17L14 8.5V3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 14c2.2-.4 3.4-2 3.6-4-2 .2-3.4 1.4-3.6 4z" fill="#4ADE80"/>
+          </svg>
+        </span>
+        <span class="logo-text">
           <span class="logo-name">Shubh Enterprise</span>
           <span class="logo-tag">Laboratory Supplies</span>
-        </div>
+        </span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="products.html" class="nav-cta">Get a Quote</a></li>
+        <li class="hide-mobile"><a href="index.html">Home</a></li>
+        <li class="hide-mobile"><a href="about.html" class="active">About Us</a></li>
+        <li class="hide-mobile"><a href="products.html">Products</a></li>
+        <li><a href="products.html#enquire" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- PAGE HERO -->
-  <section class="about-hero">
+  <section class="page-hero">
+    <div class="page-dots dotgrid"></div>
     <div class="container">
-      <span class="section-tag">Our Story</span>
-      <h1>About Shubh Enterprise</h1>
-      <p>Built on the foundation of trust, quality, and a deep understanding of India's life sciences sector.</p>
+      <span class="section-tag reveal">Our Story</span>
+      <h1 class="reveal">About Shubh Enterprise</h1>
+      <p class="reveal">Built on trust, quality and a deep understanding of India's life sciences sector.</p>
     </div>
   </section>
 
@@ -43,33 +52,34 @@
   <section class="section">
     <div class="container">
       <div class="about-intro">
-        <div class="about-intro-text">
+        <div class="about-intro-text reveal">
           <span class="section-tag">Who We Are</span>
           <h2>A Dedicated Partner for Life Sciences Procurement</h2>
           <div class="divider"></div>
           <p>
-            Shubh Enterprise was founded with a clear purpose: to simplify and strengthen the supply chain for laboratories across India. We understand that the right supplies, delivered on time and to specification, are not just a convenience — they are essential to the accuracy of diagnostics, the success of research, and ultimately, patient outcomes.
+            <strong style="color:var(--ink);font-weight:600;">Shubh</strong> (शुभ) means <em style="font-style:normal;color:var(--teal-700);">auspicious</em>. We were founded with a clear purpose: to simplify and strengthen the supply chain for laboratories across India. The right supplies, delivered on time and to specification, are not a convenience — they are the quiet precondition of accurate diagnostics, successful research and safe patient outcomes.
           </p>
           <p>
-            We specialise in trading high-quality laboratory consumables, diagnostic reagents, IVF and ART supplies, blood banking products, and pharmaceutical testing materials. Our team brings hands-on knowledge of the specific requirements of each sector we serve.
+            We specialise in trading high-quality laboratory consumables, diagnostic reagents, IVF and ART supplies, blood banking products and pharmaceutical testing materials — with hands-on knowledge of the specific requirements of each sector we serve.
           </p>
           <p>
             Whether you run a CRO handling multi-phase clinical studies, an IVF clinic managing embryo culture, a blood bank ensuring safe transfusions, or a pharma QC lab validating formulations — Shubh Enterprise is equipped to be your reliable procurement partner.
           </p>
         </div>
-        <div class="about-visual">
-          <img src="images/office.jpg" alt="Shubh Enterprise office" style="width:100%;border-radius:10px;margin-bottom:24px;object-fit:cover;max-height:200px;display:block;" onerror="this.style.display='none'" />
+        <div class="about-visual reveal">
+          <div class="visual-dots"></div>
+          <img src="images/office.jpg" alt="Shubh Enterprise" onerror="this.style.display='none'" />
           <div class="about-stat-grid">
             <div class="about-stat">
-              <div class="num">500+</div>
+              <div class="num"><span class="counter" data-target="500" data-suffix="+">0</span></div>
               <div class="lbl">Products Stocked</div>
             </div>
             <div class="about-stat">
-              <div class="num">5+</div>
+              <div class="num"><span class="counter" data-target="5" data-suffix="+">0</span></div>
               <div class="lbl">Sectors Served</div>
             </div>
             <div class="about-stat">
-              <div class="num">100%</div>
+              <div class="num"><span class="counter" data-target="100" data-suffix="%">0</span></div>
               <div class="lbl">Quality Certified</div>
             </div>
             <div class="about-stat">
@@ -85,26 +95,26 @@
   <!-- MISSION & VISION -->
   <section class="section section-alt">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Purpose &amp; Direction</span>
         <h2>Mission &amp; Vision</h2>
         <div class="divider center"></div>
       </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="value-icon" style="margin-bottom:18px;">&#x1F3AF;</div>
+      <div class="why-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="why-card reveal">
+          <div class="value-icon"><i class="ph ph-target"></i></div>
           <h3>Our Mission</h3>
-          <p>To provide laboratories, clinics, and pharmaceutical companies across India with consistent access to high-quality, certified laboratory supplies — delivered reliably, priced fairly, and backed by expert guidance.</p>
+          <p>To provide laboratories, clinics and pharmaceutical companies across India with consistent access to high-quality, certified supplies — delivered reliably, priced fairly and backed by expert guidance.</p>
         </div>
-        <div class="why-card">
-          <div class="value-icon" style="margin-bottom:18px;">&#x1F52D;</div>
+        <div class="why-card reveal">
+          <div class="value-icon"><i class="ph ph-binoculars"></i></div>
           <h3>Our Vision</h3>
-          <p>To become India's most trusted name in laboratory supply trading by building long-term relationships grounded in quality, transparency, and a genuine commitment to the success of every lab we serve.</p>
+          <p>To become India's most trusted name in laboratory supply trading by building long-term relationships grounded in quality, transparency and genuine commitment to every lab we serve.</p>
         </div>
-        <div class="why-card">
-          <div class="value-icon" style="margin-bottom:18px;">&#x1F91D;</div>
+        <div class="why-card reveal">
+          <div class="value-icon"><i class="ph ph-handshake"></i></div>
           <h3>Our Approach</h3>
-          <p>We listen first. Understanding your lab's workflow, scale, and regulatory environment allows us to recommend the right products — not just the most popular ones. Every client relationship is personalised.</p>
+          <p>We listen first. Understanding your lab's workflow, scale and regulatory environment lets us recommend the right products — not just the popular ones. Every relationship is personalised.</p>
         </div>
       </div>
     </div>
@@ -113,41 +123,41 @@
   <!-- VALUES -->
   <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">What We Stand For</span>
         <h2>Our Core Values</h2>
         <div class="divider center"></div>
       </div>
       <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon">&#x2714;&#xFE0F;</div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="ph ph-seal-check"></i></div>
           <h3>Quality First</h3>
-          <p>We only supply products that meet industry standards. Every item is sourced from verified, certified manufacturers.</p>
+          <p>We only supply products that meet industry standards, sourced from verified, certified manufacturers.</p>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#x1F91D;</div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="ph ph-handshake"></i></div>
           <h3>Client Trust</h3>
-          <p>Long-term relationships matter more than one-time sales. We earn trust through consistency, honesty, and follow-through.</p>
+          <p>Long-term relationships matter more than one-time sales. We earn trust through consistency and honesty.</p>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#x26A1;</div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="ph ph-lightning"></i></div>
           <h3>Reliability</h3>
-          <p>Science doesn't pause. We maintain robust inventory and fast logistics so your operations never face critical shortages.</p>
+          <p>Science doesn't pause. We maintain robust inventory and fast logistics so you never face critical shortages.</p>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#x1F4A1;</div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="ph ph-brain"></i></div>
           <h3>Expert Knowledge</h3>
-          <p>Our team understands the nuances of lab procurement across sectors — from cold chain requirements to regulatory compliance.</p>
+          <p>We understand the nuances of lab procurement across sectors — from cold chain to regulatory compliance.</p>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#x1F4B0;</div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="ph ph-scales"></i></div>
           <h3>Fair Pricing</h3>
-          <p>We offer competitive pricing and transparent quotations with no hidden costs, helping labs manage their budgets effectively.</p>
+          <p>Competitive pricing and transparent quotations with no hidden costs, helping labs manage budgets effectively.</p>
         </div>
-        <div class="value-card">
-          <div class="value-icon">&#x1F331;</div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i class="ph ph-plant"></i></div>
           <h3>Growth Together</h3>
-          <p>As our clients' labs grow and evolve, we grow our product range and capabilities alongside them to meet new demands.</p>
+          <p>As our clients' labs grow and evolve, we grow our product range and capabilities alongside them.</p>
         </div>
       </div>
     </div>
@@ -156,36 +166,37 @@
   <!-- SECTORS SERVED -->
   <section class="section section-alt">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Industries We Serve</span>
         <h2>Sectors We Supply</h2>
         <div class="divider center"></div>
-        <p>We have developed specific expertise and product ranges tailored to the distinct needs of each of these sectors.</p>
+        <p>Specific expertise and product ranges tailored to the distinct needs of each sector.</p>
       </div>
       <div class="sectors-grid">
-        <div class="sector-item"><div class="sector-dot"></div>Contract Research Organisations (CROs)</div>
-        <div class="sector-item"><div class="sector-dot"></div>IVF &amp; Assisted Reproduction Centers</div>
-        <div class="sector-item"><div class="sector-dot"></div>Blood Banks &amp; Transfusion Services</div>
-        <div class="sector-item"><div class="sector-dot"></div>Blood Testing &amp; Diagnostic Centres</div>
-        <div class="sector-item"><div class="sector-dot"></div>Pharmaceutical QC &amp; R&amp;D Labs</div>
-        <div class="sector-item"><div class="sector-dot"></div>Clinical &amp; Hospital Laboratories</div>
-        <div class="sector-item"><div class="sector-dot"></div>Academic &amp; Research Institutions</div>
-        <div class="sector-item"><div class="sector-dot"></div>Pathology &amp; Histology Labs</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Contract Research Organisations (CROs)</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>IVF &amp; Assisted Reproduction Centers</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Blood Banks &amp; Transfusion Services</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Blood Testing &amp; Diagnostic Centres</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Pharmaceutical QC &amp; R&amp;D Labs</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Clinical &amp; Hospital Laboratories</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Academic &amp; Research Institutions</div>
+        <div class="sector-item reveal"><div class="sector-dot"></div>Pathology &amp; Histology Labs</div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-section">
+    <div class="cta-dots"></div>
     <div class="container">
-      <span class="section-tag">Let's Work Together</span>
-      <h2>Interested in Partnering with Us?</h2>
-      <p>Browse our product catalogue or reach out directly — we'd love to understand your lab's requirements.</p>
-      <a href="products.html" class="btn btn-primary">View Products &#x2192;</a>
+      <span class="section-tag reveal">Let's Work Together</span>
+      <h2 class="reveal">Interested in Partnering with Us?</h2>
+      <p class="reveal">Browse our product catalogue or reach out directly — we'd love to understand your lab's requirements.</p>
+      <a href="products.html" class="btn btn-light reveal">View Products <i class="ph ph-arrow-right"></i></a>
       <div class="cta-contact">
-        <div class="cta-contact-item">&#x1F4E7; <span>Email: <strong>info@shubhenterprise.in</strong></span></div>
-        <div class="cta-contact-item">&#x1F4DE; <span>Phone: <strong>+91 XXXXX XXXXX</strong></span></div>
-        <div class="cta-contact-item">&#x1F4CD; <span>Location: <strong>India</strong></span></div>
+        <div class="cta-contact-item"><i class="ph ph-envelope-simple"></i> <span>Email: <strong>info@shubhenterprise.in</strong></span></div>
+        <div class="cta-contact-item"><i class="ph ph-phone"></i> <span>Phone: <strong>+91 XXXXX XXXXX</strong></span></div>
+        <div class="cta-contact-item"><i class="ph ph-map-pin"></i> <span>Location: <strong>India</strong></span></div>
       </div>
     </div>
   </section>
@@ -196,15 +207,18 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo">
-            <div class="logo-icon">
-              <img src="images/logo.png" alt="Shubh Enterprise Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" onerror="this.outerHTML='SE'" />
-            </div>
-            <div class="logo-text">
-              <span class="logo-name" style="color:#fff;">Shubh Enterprise</span>
+            <span class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 3h6M10 3v5.5L5.5 17a2.5 2.5 0 0 0 2.3 3.5h8.4A2.5 2.5 0 0 0 18.5 17L14 8.5V3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 14c2.2-.4 3.4-2 3.6-4-2 .2-3.4 1.4-3.6 4z" fill="#4ADE80"/>
+              </svg>
+            </span>
+            <span class="logo-text">
+              <span class="logo-name">Shubh Enterprise</span>
               <span class="logo-tag">Laboratory Supplies</span>
-            </div>
+            </span>
           </div>
-          <p>Your trusted partner for laboratory consumables, diagnostic reagents, and medical supplies across India's life sciences sector.</p>
+          <p>Your trusted partner for laboratory consumables, diagnostic reagents and medical supplies across India's life sciences sector.</p>
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
@@ -217,11 +231,11 @@
         <div class="footer-col">
           <h4>Sectors</h4>
           <ul>
-            <li><a href="#">CROs &amp; Research</a></li>
-            <li><a href="#">IVF Centers</a></li>
-            <li><a href="#">Blood Banks</a></li>
-            <li><a href="#">Diagnostic Labs</a></li>
-            <li><a href="#">Pharmaceuticals</a></li>
+            <li><a href="products.html">CROs &amp; Research</a></li>
+            <li><a href="products.html">IVF Centers</a></li>
+            <li><a href="products.html">Blood Banks</a></li>
+            <li><a href="products.html">Diagnostic Labs</a></li>
+            <li><a href="products.html">Pharmaceuticals</a></li>
           </ul>
         </div>
       </div>
@@ -232,11 +246,6 @@
     </div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-  </script>
+  <script src="motion.js"></script>
 </body>
 </html>
